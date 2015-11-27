@@ -1,0 +1,20 @@
+[mysqld]
+user = mysql
+datadir = /var/lib/mysql
+max_allowed_packet = 64M
+wait_timeout = 6000
+collation-server = utf8_unicode_ci
+init-connect='SET NAMES utf8'
+character-set-server = utf8
+
+innodb_buffer_pool_size = 128M
+innodb_flush_method = O_DIRECT
+innodb_flush_log_at_trx_commit = 1
+innodb_additional_mem_pool_size = 16M
+innodb_log_buffer_size = 32M
+innodb_file_per_table = True
+innodb_support_xa=1
+innodb_file_format=Barracuda
+
+[mysqldump]
+max_allowed_packet = 64M

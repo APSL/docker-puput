@@ -1,0 +1,22 @@
+web:
+  extends:
+    file: common.yml
+    service: web
+  ports:
+    - "8000:8000"
+  links: 
+    - redis:redis-master
+    - mysql
+  environment:
+    DEBUG: True
+
+mysql:
+  extends:
+    file: common.yml
+    service: mysql
+
+redis:
+  extends:
+    file: common.yml
+    service: redis
+

@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# TransTic Manage
+# bcabezas@apsl.net
+# simple script to simplify and document docker/compose management
+
+[[ -z $1 ]] && { echo -e "TransTic Manage\nUsage: ./ttm bash|build|restart|logs|stats|mysql ...\n\nSee: cat ttm"; exit 1; }
+
+case $1 in 
+    bash)
+        echo "--> running shell.. $@"
+        docker exec -ti puput_web_1 bash
+        ;;
+    flushredis)
+        echo "--> running flushdb $@"
+        docker exec -ti puput_redis_1 sh -c "echo flushdb|redis-cli -n 1"
+        ;;
+    build)
+        echo "--> building  puput..."
+        docker-compose  build
+        ;;
+    restart)
+        echo "--> restarting  puput..."
+        docker-compose  stop
+        docker-compose  rm -f web
+        docker-compose  up
+        ;;
+    ps)
+        echo "--> status  puput..."
+        docker-compose  ps
+        ;;
+    stats)
+        echo "--> stats  puput..."
+        docker stats puput_mysql_1 puput_redis_1  puput_web_1
+        ;;
+    logs)
+        echo "--> logs  puput..."
+        docker-compose  logs
+        ;;
+    mysql)
+        echo "--> puput mysql cli..."
+        docker-compose run --rm mysql \
+            sh -c 'exec mysql -h mysql -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
+        ;;
+    # default: manage.py shortcut
+    redis-cli)
+        docker-compose run --rm redis redis-cli -h redis
+        ;;
+    *)
+        echo "--> running manage $@"
+        docker-compose run web python manage.py $@
+        ;;
+esac
