@@ -1,0 +1,26 @@
+sudo: required
+language: ruby
+services:
+- docker
+script:
+- ls -lah
+- docker build -f Dockerfile -t apsl/puput .
+- docker-compose -f docker-compose-demo.yml up -d
+- docker-compose -f docker-compose-demo.yml ps
+- sleep 10
+- docker exec -ti dockerpuput_web_1 python manage.py migrate
+- wget http://localhost:8000/blog/
+notifications:
+  email:
+  - gshark@gmail.com
+env:
+  global:
+  - PUPUT_VERSION=0.4.1
+after_success:
+- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $PUPUT_VERSION; fi`
+- docker tag apsl/puput apsl/puput:$TAG
+- docker push apsl/puput:$TAG
+
+
+ 

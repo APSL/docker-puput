@@ -1,3 +1,3 @@
 Django==1.8.4
-puput==0.3
+puput==0.4.1
 mysqlclient==1.3.6
