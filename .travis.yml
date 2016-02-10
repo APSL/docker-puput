@@ -5,8 +5,8 @@ services:
 script:
 - ls -lah
 - docker build -f Dockerfile -t apsl/puput .
-- docker-compose -f docker-compose-demo.yml up -d
-- docker-compose -f docker-compose-demo.yml ps
+- docker-compose -f docker-compose.yml up -d
+- docker-compose -f docker-compose.yml ps
 - sleep 10
 - docker exec -ti dockerpuput_web_1 python manage.py migrate
 - wget http://localhost:8000/blog/
