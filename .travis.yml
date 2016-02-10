@@ -5,8 +5,8 @@ services:
 script:
 - ls -lah
 - docker build -f Dockerfile -t apsl/puput .
-- docker-compose -f docker-compose.yml up -d
-- docker-compose -f docker-compose.yml ps
+- docker-compose up -d
+- docker-compose ps
 - sleep 10
 - docker exec -ti dockerpuput_web_1 python manage.py migrate
 - docker exec -ti dockerpuput_web_1 python manage.py puput_initial_data
