@@ -1,6 +1,9 @@
+[![Build Status](https://travis-ci.org/APSL/docker-puput.svg?branch=master)](https://travis-ci.org/APSL/docker-puput)
+
 Minimal Usage
 ================
 Consider to use docker-compose and our [docker-compose.yml example](https://github.com/APSL/docker-puput/blob/master/docker-compose.yml)
+
 To test puput just clone the repository and:
 ```
 $ docker-compose up -d
@@ -13,13 +16,6 @@ You can see the puput blog at:
 
 Docker puput
 ========================
-
-[![Build Status](https://travis-ci.org/APSL/docker-puput.svg?branch=master)](https://travis-ci.org/APSL/docker-puput)
-
-Description
-===========
-
-Docker puput
 
 * All configuration via environment variables
 * Docker compose example to test puput quickly
