@@ -11,14 +11,14 @@ $ docker-compose ps
 $ docker exec -ti dockerpuput_web_1 python manage.py migrate
 $ docker exec -ti dockerpuput_web_1 python manage.py puput_initial_data
 ```
-You can see the puput blog at:
+You can see the Puput blog at:
 [http://localhost:8000/blog/](http://localhost:8000/blog/)
 
-Docker puput
+Docker Puput
 ========================
 
 * All configuration via environment variables
-* Docker compose example to test puput quickly
+* Docker compose example to test Puput quickly
 
 Ports
 =====
