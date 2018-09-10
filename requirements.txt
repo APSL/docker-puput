@@ -1,2 +1,2 @@
-puput==0.5
+puput
 mysqlclient==1.3.6
