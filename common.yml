@@ -3,14 +3,14 @@ web:
   volumes:
     - ./data/media:/media
   environment:
-    DATABASE_ENGINE: django.db.backends.mysql
-    DATABASE_HOST: mysql
-    DATABASE_NAME: puput
-    DATABASE_USER: upuput
-    DATABASE_PASSWORD: changeme
+    DATABASE_ENGINE: "django.db.backends.mysql"
+    DATABASE_HOST: "mysql"
+    DATABASE_NAME: "puput"
+    DATABASE_USER: "upuput"
+    DATABASE_PASSWORD: "changeme"
     ALLOWED_HOSTS: "*"
-    DEBUG: False
-    SECRET_KEY: alsochangeme_
+    DEBUG: "False"
+    SECRET_KEY: "alsochangeme_"
 
 mysql:
   image: mysql:5.6
@@ -18,10 +18,10 @@ mysql:
     - ./data/mysql:/var/lib/mysql
     - ./conf/mysql:/etc/mysql/conf.d
   environment:
-    MYSQL_ROOT_PASSWORD: changeme
-    MYSQL_DATABASE: puput
-    MYSQL_USER: upuput
-    MYSQL_PASSWORD: changeme
+    MYSQL_ROOT_PASSWORD: "changeme"
+    MYSQL_DATABASE: "puput"
+    MYSQL_USER: "upuput"
+    MYSQL_PASSWORD: "changeme"
 
 redis:
   image: redis:3
